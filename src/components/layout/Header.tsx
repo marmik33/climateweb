@@ -10,7 +10,6 @@ const Header: React.FC = () => {
         { name: 'Gráficos 2D', path: '/charts-2d' },
         { name: 'Gráficos 3D', path: '/charts-3d' },
         { name: 'Explorador', path: '/climate-explorer' },
-        { name: 'Análisis Avanzado', path: '/advanced-analysis' },
         { name: 'Acerca de', path: '/about' },
     ];
 

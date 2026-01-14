@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
-    const currentYear = new Date().getFullYear();
-
     return (
         <footer className="bg-gray-900 text-white">
         <div className="w-full px-6 py-12">
@@ -131,28 +129,6 @@ const Footer: React.FC = () => {
                     </a>
                 </li>
                 </ul>
-            </div>
-            </div>
-
-            {/* Divider */}
-            <div className="border-t border-gray-800 mt-8 pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center">
-                <div className="text-gray-400 text-sm mb-4 md:mb-0">
-                © {currentYear} ECharts Climate Explorer. Proyecto educativo.
-                </div>
-                <div className="flex items-center space-x-4">
-                <span className="text-gray-400 text-sm">
-                    Datos climáticos de demostración
-                </span>
-                <div className="flex space-x-2">
-                    <button className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700">
-                    <span className="text-xs">🌍</span>
-                    </button>
-                    <button className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700">
-                    <span className="text-xs">📊</span>
-                    </button>
-                </div>
-                </div>
             </div>
             </div>
         </div>

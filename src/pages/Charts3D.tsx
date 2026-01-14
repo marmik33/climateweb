@@ -12,7 +12,6 @@ const Charts3D: React.FC = () => {
     const [selectedYear, setSelectedYear] = useState('2024');
     const [selectedLocation, setSelectedLocation] = useState('madrid');
     const [autoRotate, setAutoRotate] = useState(true);
-    const [showGrid, setShowGrid] = useState(true);
     const [cacheInfo, setCacheInfo] = useState<string>('');
 
     const years = [
@@ -91,11 +90,6 @@ const Charts3D: React.FC = () => {
                         label="Rotación Automática"
                         checked={autoRotate}
                         onChange={setAutoRotate}
-                    />
-                    <Toggle
-                        label="Mostrar Cuadrícula"
-                        checked={showGrid}
-                        onChange={setShowGrid}
                     />
                     </div>
                 </div>
@@ -215,131 +209,6 @@ const Charts3D: React.FC = () => {
             </Card>
 
             </div>
-
-            {/* Información Técnica 3D */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-            
-            <Card>
-                <div className="p-6">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">
-                    Ventajas de la Visualización 3D
-                </h3>
-                <ul className="space-y-3">
-                    <li className="flex items-start">
-                    <div className="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3">
-                        <span className="text-green-600 text-sm">✓</span>
-                    </div>
-                    <span className="text-gray-700">
-                        <strong>Profundidad espacial:</strong> Permite visualizar relaciones complejas entre tres variables simultáneamente.
-                    </span>
-                    </li>
-                    <li className="flex items-start">
-                    <div className="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3">
-                        <span className="text-green-600 text-sm">✓</span>
-                    </div>
-                    <span className="text-gray-700">
-                        <strong>Interactividad completa:</strong> Los usuarios pueden explorar los datos desde cualquier ángulo.
-                    </span>
-                    </li>
-                    <li className="flex items-start">
-                    <div className="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3">
-                        <span className="text-green-600 text-sm">✓</span>
-                    </div>
-                    <span className="text-gray-700">
-                        <strong>Identificación de patrones:</strong> Facilita la detección de clusters y correlaciones no evidentes en 2D.
-                    </span>
-                    </li>
-                </ul>
-                </div>
-            </Card>
-
-            <Card>
-                <div className="p-6">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">
-                    Consideraciones Técnicas
-                </h3>
-                <ul className="space-y-3">
-                    <li className="flex items-start">
-                    <div className="flex-shrink-0 w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                        <span className="text-blue-600 text-sm">⚡</span>
-                    </div>
-                    <span className="text-gray-700">
-                        <strong>Rendimiento:</strong> Los gráficos 3D utilizan WebGL para renderizado acelerado por hardware.
-                    </span>
-                    </li>
-                    <li className="flex items-start">
-                    <div className="flex-shrink-0 w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                        <span className="text-blue-600 text-sm">📱</span>
-                    </div>
-                    <span className="text-gray-700">
-                        <strong>Compatibilidad:</strong> Funciona en navegadores modernos con soporte WebGL.
-                    </span>
-                    </li>
-                    <li className="flex items-start">
-                    <div className="flex-shrink-0 w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                        <span className="text-blue-600 text-sm">📊</span>
-                    </div>
-                    <span className="text-gray-700">
-                        <strong>Datos:</strong> Utiliza datos procesados de la API Open-Meteo con cache inteligente.
-                    </span>
-                    </li>
-                </ul>
-                </div>
-            </Card>
-
-            </div>
-
-            {/* Tipos de Gráficos 3D */}
-            <Card className="mt-8">
-            <div className="p-6">
-                <h3 className="text-lg font-semibold text-gray-800 mb-6 text-center">
-                Tipos de Gráficos 3D Implementados
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                
-                <div className="text-center">
-                    <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-orange-600 text-2xl">📊</span>
-                    </div>
-                    <h4 className="font-medium text-gray-800 mb-2">Gráfico de Barras 3D</h4>
-                    <p className="text-sm text-gray-600">
-                    Representación tridimensional de datos categóricos con altura, ancho y profundidad.
-                    </p>
-                    <div className="mt-3 text-xs text-gray-500">
-                    <strong>Uso:</strong> Distribución temporal, comparaciones multivariable
-                    </div>
-                </div>
-                
-                <div className="text-center">
-                    <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-purple-600 text-2xl">• • •</span>
-                    </div>
-                    <h4 className="font-medium text-gray-800 mb-2">Gráfico de Dispersión 3D</h4>
-                    <p className="text-sm text-gray-600">
-                    Puntos en espacio tridimensional para analizar relaciones entre tres variables continuas.
-                    </p>
-                    <div className="mt-3 text-xs text-gray-500">
-                    <strong>Uso:</strong> Correlaciones, clusters, análisis multivariable
-                    </div>
-                </div>
-                
-                <div className="text-center">
-                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-blue-600 text-2xl">🌐</span>
-                    </div>
-                    <h4 className="font-medium text-gray-800 mb-2">Superficies 3D</h4>
-                    <p className="text-sm text-gray-600">
-                    Representación de superficies continuas para datos geográficos o matemáticos complejos.
-                    </p>
-                    <div className="mt-3 text-xs text-gray-500">
-                    <strong>Uso:</strong> Mapas topográficos, distribuciones espaciales
-                    </div>
-                </div>
-                
-                </div>
-            </div>
-            </Card>
-
         </div>
         </div>
     );

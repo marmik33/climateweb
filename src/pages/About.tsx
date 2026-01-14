@@ -166,13 +166,14 @@ const About: React.FC = () => {
                     <div className="pt-6 border-t border-gray-200">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between">
                         <div>
-                        <h4 className="font-medium text-gray-800 mb-2">¿Interesado en el código fuente?</h4>
-                        <p className="text-gray-600 text-sm">
-                            Este proyecto es de código abierto y está disponible para estudio y modificación.
-                        </p>
+                        <h4 className="font-medium text-gray-800 mb-2">¿Interesado en el código fuente de este proyecto?</h4>
                         </div>
-                        <Button variant="primary" className="mt-4 sm:mt-0">
-                        Ver Código en GitHub
+                        <Button 
+                            variant="primary" 
+                            className="mt-4 sm:mt-0"
+                            onClick={() => window.open('https://github.com/marmik33/climateweb')}
+                        >
+                            Ver Código en GitHub
                         </Button>
                     </div>
                     </div>

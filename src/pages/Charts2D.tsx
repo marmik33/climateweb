@@ -6,7 +6,6 @@ import Button from '../components/ui/Button';
 import { BarChart2D } from '../components/charts/BarChart2D';
 import { LineChart2D } from '../components/charts/LineChart2D';
 import { CircularChart2D } from '../components/charts/CircularChart2D';
-import { RadarChart2D } from '../components/charts/RadarChart2D';
 import { ClimateApiService } from '../services/climateApi';
 import { WindRoseChart } from '../components/charts/WindRoseChart';
 import { BoxPlotChart } from '../components/charts/BoxPlotChart';
@@ -15,8 +14,6 @@ import { StackedBarChart } from '../components/charts/StackedBarChart';
 const Charts2D: React.FC = () => {
     const [selectedYear, setSelectedYear] = useState('2023');
     const [selectedLocation, setSelectedLocation] = useState('madrid');
-    const [compareLocation, setCompareLocation] = useState<string | undefined>(undefined);
-    const [showComparison, setShowComparison] = useState(false);
     const [cacheInfo, setCacheInfo] = useState<string>('');
 
     const years = [
@@ -40,13 +37,6 @@ const Charts2D: React.FC = () => {
         ClimateApiService.clearCache();
         setCacheInfo('Caché limpiada. Se cargarán nuevos datos de la API.');
         setTimeout(() => setCacheInfo(''), 3000);
-    };
-
-    const toggleComparison = () => {
-        if (showComparison) {
-        setCompareLocation(undefined);
-        }
-        setShowComparison(!showComparison);
     };
 
     return (
@@ -73,13 +63,6 @@ const Charts2D: React.FC = () => {
                     Configuración de Visualización
                 </h2>
                 <div className="flex space-x-3">
-                    <Button 
-                    variant="secondary" 
-                    onClick={toggleComparison}
-                    className={showComparison ? 'bg-purple-100 text-purple-800' : ''}
-                    >
-                    {showComparison ? 'Ocultar Comparación' : 'Comparar Ciudades'}
-                    </Button>
                     <Button variant="secondary" onClick={clearCache} size="sm">
                     Limpiar Caché
                     </Button>
@@ -108,20 +91,6 @@ const Charts2D: React.FC = () => {
                     onChange={(e) => setSelectedLocation(e.target.value)}
                     />
                 </div>
-                
-                {showComparison && (
-                    <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Ciudad a Comparar
-                    </label>
-                    <Select
-                        options={locations.filter(loc => loc.value !== selectedLocation)}
-                        value={compareLocation || ''}
-                        onChange={(e) => setCompareLocation(e.target.value)}
-                        placeholder="Selecciona una ciudad"
-                    />
-                    </div>
-                )}
                 </div>
                 
                 <div className="mt-6 pt-6 border-t border-gray-200">
@@ -321,79 +290,7 @@ const Charts2D: React.FC = () => {
                 </div>
             </Card>
 
-            {/* Gráfico de Radar - Comparación (si está activada) */}
-            {showComparison && compareLocation && (
-                <Card className="lg:col-span-2">
-                <div className="p-4">
-                    <div className="flex justify-between items-center mb-4">
-                    <h2 className="text-lg font-bold text-gray-800">
-                        Comparación Climática Anual
-                    </h2>
-                    <span className="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium">
-                        Radar 2D
-                    </span>
-                    </div>
-                    <div className="h-80">
-                    <RadarChart2D
-                        location={selectedLocation}
-                        year={selectedYear}
-                        compareLocation={compareLocation}
-                        title=""
-                        height="100%"
-                    />
-                    </div>
-                    <p className="text-xs text-gray-500 mt-2">
-                    Comparación de variables climáticas entre {selectedLocation} y {compareLocation} en {selectedYear}
-                    </p>
-                </div>
-                </Card>
-            )}
-
             </div>
-            {/* Información Adicional */}
-            <Card className="mt-8">
-            <div className="p-6">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">
-                Tipos de Gráficos 2D Disponibles
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div className="p-4 bg-red-50 rounded-lg">
-                    <h4 className="font-medium text-red-800 mb-2">Gráfico de Barras</h4>
-                    <p className="text-sm text-red-700">
-                    Ideal para comparar valores entre diferentes meses o categorías.
-                    </p>
-                </div>
-                <div className="p-4 bg-blue-50 rounded-lg">
-                    <h4 className="font-medium text-blue-800 mb-2">Gráfico de Líneas</h4>
-                    <p className="text-sm text-blue-700">
-                    Perfecto para mostrar tendencias y evolución temporal.
-                    </p>
-                </div>
-                <div className="p-4 bg-purple-50 rounded-lg">
-                    <h4 className="font-medium text-purple-800 mb-2">Gráfico Circular</h4>
-                    <p className="text-sm text-purple-700">
-                    Excelente para mostrar distribución porcentual o proporciones.
-                    </p>
-                </div>
-                <div className="p-4 bg-yellow-50 rounded-lg">
-                    <h4 className="font-medium text-yellow-800 mb-2">Gráfico de Radar</h4>
-                    <p className="text-sm text-yellow-700">
-                    Ideal para comparar múltiples variables entre diferentes conjuntos.
-                    </p>
-                </div>
-                </div>
-                
-                <div className="mt-6 pt-6 border-t border-gray-200">
-                <h4 className="font-medium text-gray-800 mb-2">Fuente de Datos</h4>
-                <p className="text-sm text-gray-600">
-                    Todos los gráficos utilizan datos reales de la API de Open-Meteo. 
-                    Los datos históricos se procesan para calcular promedios mensuales 
-                    de temperatura máxima, precipitación acumulada y velocidad máxima del viento.
-                </p>
-                </div>
-            </div>
-            </Card>
-
         </div>
         </div>
     );
