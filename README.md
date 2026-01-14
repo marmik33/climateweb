@@ -1,6 +1,6 @@
 # ECharts Climate Explorer
 
-ECharts Climate Explorer is an educational web application built with React, TypeScript, and Apache ECharts.  
+ECharts Climate Explorer is a web application built with React, TypeScript, and Apache ECharts.  
 The goal of this project is to demonstrate the capabilities of the ECharts library for creating interactive 2D and 3D data visualizations focused on climate data.
 
 The application allows users to explore different climate variables such as temperature, precipitation, wind, and atmospheric pressure across multiple regions around the world.
