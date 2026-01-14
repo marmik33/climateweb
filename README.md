@@ -58,18 +58,10 @@ src/
 ├── main.tsx
 └── index.css
 ```
-## Installation and Setup
+## View online
 
-- Clone the repository:
-    - git clone https://github.com/your-username/echarts-climate-explorer.git
-- Navigate to the project directory:
-    - cd echarts-climate-explorer
-- Install dependencies:
-    - npm install
-- Start the development server:
-    - npm run dev
 - The application will be available at:
-    - http://localhost:5173
+    - https://echartsclimateexplorer.vercel.app
 
 ## Data Disclaimer
 
